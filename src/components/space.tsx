@@ -6,26 +6,27 @@ import { lerp } from "three/src/math/MathUtils";
 
 
 export default function Space() {
+
     return <div className="visual-container">
             <Canvas camera={{fov: 75, near: 0.01, far: 1000, position: [1, 1, 1], type:'PerspectiveCamera'}}>
                 <ambientLight intensity={0.5}/>
                 <pointLight position={[4, Math.sqrt(16/3), -4]} />
-                <Planet size={0.5} clouds={500} 
+                    <Planet size={0.5} rocks={500}
                     color = {new Color(0xC70A80)} />
-                {/* <Box position={[1.2, 0, 0]} /> */}
             </Canvas>
     </div>;
 }
 
 function Planet(props: {
     size: number,
-    clouds: number,
+    rocks: number,
     color: Color | string
 }) {
     const planetGroup = useRef<Mesh>();
     const planet = useRef<Mesh>();
     let intro = 0;
-    useFrame(()=>{
+    let cur = 0;
+    useFrame(state =>{
         if(intro < Math.PI / 2) {
             const i = lerp(0, 1, Math.sin(intro))
             planetGroup.current!!.scale.set(i,i,i)
@@ -34,11 +35,18 @@ function Planet(props: {
                                           lerp(0, Math.PI / 4, Math.sin(intro)));
             intro += 0.004;
         }
-        planet.current!!.rotateY(0.002);
+        planet.current!!.rotation.y += 0.002;
+
+        const newVal = cur + (state.pointer.y - cur) * 0.01;
+
+        planetGroup.current!!.rotation.z = lerp(Math.PI / 4, Math.PI / 4 + Math.PI / 25, newVal);
+        // planet.current!!.rotation.z = state.pointer.x * Math.PI / 50;
+        console.log(newVal)
+        cur = newVal;
     })
 
     const rocks = [];
-    for(let i = 0; i < props.clouds; i++) {
+    for(let i = 0; i < props.rocks; i++) {
         rocks.push(
             <Rock key={i}
              radius={props.size}
@@ -48,14 +56,14 @@ function Planet(props: {
 
     return (
         <group rotation={[45,-45,45]} position={[0,0.5,-1]} ref={planetGroup}>
-        <mesh
-            position={[0,0,0]}
-            scale={props.size}
-            ref={planet}>
-            <sphereGeometry args={[1, 16, 16]} />
-            <meshPhongMaterial wireframe color={props.color} />
-        </mesh>
-        {rocks}
+            <mesh
+                position={[0,0,0]}
+                scale={props.size}
+                ref={planet}>
+                <sphereGeometry args={[1, 16, 16]} />
+                <meshPhongMaterial wireframe color={props.color} />
+            </mesh>
+            {rocks}
         </group>
     )
   }
