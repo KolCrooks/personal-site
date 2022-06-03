@@ -4,22 +4,8 @@
 #main {
     width: 100%;
     height: 100%;
-}
-
-
-.square {
-    width: 100%;
-    height: 0;
-    padding-top: 100%;
-    position: relative;
-
-    & .content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
+    min-height: -webkit-fill-available;
+    min-width: -webkit-fill-available;
 }
 
 .name {
@@ -65,14 +51,13 @@ a:link, a:visited {
 }
 
 .space-container {
-    width: max(100vh,100vw);
-    height: max(100vh,100vw);
-
+    width: Max(100vh,100vw);
+    height: Max(100vh,100vw);
     display: flex;
     flex-direction: row;
     justify-content: end;
     z-index: -1;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 }

@@ -7,7 +7,7 @@ import { lerp } from "three/src/math/MathUtils";
 
 export default function Space() {
     return <div className="visual-container">
-            <Canvas camera={{fov: 75, near: 0.01, far: 1000, position: [1, 1, 1]}}>
+            <Canvas camera={{fov: 75, near: 0.01, far: 1000, position: [1, 1, 1], type:'PerspectiveCamera'}}>
                 <ambientLight intensity={0.5}/>
                 <pointLight position={[4, Math.sqrt(16/3), -4]} />
                 <Planet size={0.5} clouds={500} 
