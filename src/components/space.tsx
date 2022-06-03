@@ -27,6 +27,7 @@ function Planet(props: {
     let intro = 0;
     let cur = 0;
     useFrame(state =>{
+        const newVal = cur + (state.pointer.y - cur) * 0.01;
         if(intro < Math.PI / 2) {
             const i = lerp(0, 1, Math.sin(intro))
             planetGroup.current!!.scale.set(i,i,i)
@@ -34,14 +35,11 @@ function Planet(props: {
                                           -Math.PI / 4,
                                           lerp(0, Math.PI / 4, Math.sin(intro)));
             intro += 0.004;
+        }else {
+            planetGroup.current!!.rotation.z = lerp(Math.PI / 4, Math.PI / 4 + Math.PI / 25, newVal);
         }
         planet.current!!.rotation.y += 0.002;
-
-        const newVal = cur + (state.pointer.y - cur) * 0.01;
-
-        planetGroup.current!!.rotation.z = lerp(Math.PI / 4, Math.PI / 4 + Math.PI / 25, newVal);
-        // planet.current!!.rotation.z = state.pointer.x * Math.PI / 50;
-        console.log(newVal)
+        
         cur = newVal;
     })
 

@@ -1,7 +1,7 @@
 import * as React from "react";
-import Space from "../components/space";
 import '../styles/index.scss';
 import resume from '../files/Resume_KolCrooks.pdf';
+const Space = React.lazy(() => import("../components/space"));
 
 // markup
 const IndexPage = () => {
