@@ -1,4 +1,4 @@
-import type { GatsbyConfig } from "gatsby";
+import type { GatsbyConfig, CreateWebpackConfigArgs } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -16,7 +16,7 @@ const config: GatsbyConfig = {
       "path": "./src/pages/"
     },
     __key: "pages"
-  }]
+  }],
 };
 
 export default config;
