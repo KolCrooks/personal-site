@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkkol_crooks=self.webpackChunkkol_crooks||[]).push([[317],{8109:function(e,n,o){o.r(n);var l=o(7294);n.default=function(){return l.createElement("div",null,l.createElement("h1",null,"Projects Coming Soon"))}}}]);
+//# sourceMappingURL=component---src-pages-projects-tsx-5c014cd605d321c4e21e.js.map
