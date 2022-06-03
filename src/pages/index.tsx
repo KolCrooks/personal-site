@@ -9,7 +9,7 @@ const IndexPage = () => {
     <main id="main">
       <title>Home Page</title>
       <div className="name" onMouseMove={()=>true}>Kol Crooks</div>
-      <div className="links inverted">
+      <div className="links">
         <div>
           &gt; <a href="https://github.com/KolCrooks">GitHub</a>
         </div>
