@@ -17,7 +17,7 @@ const IndexPage = () => {
         <div>
           &gt; <a href={resume}>Resume</a> <br />
         </div>
-        <div>
+        <div className="padding-bottom">
           &gt; <a href="/projects"> Projects </a>
         </div>
       </div>
