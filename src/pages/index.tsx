@@ -1,6 +1,5 @@
 import * as React from "react";
 import '../styles/index.scss';
-import resume from '../files/Resume_KolCrooks.pdf';
 const Space = React.lazy(() => import("../components/space"));
 
 // markup
@@ -14,7 +13,7 @@ const IndexPage = () => {
           &gt; <a href="https://github.com/KolCrooks">GitHub</a>
         </div>
         <div>
-          &gt; <a href={resume}>Resume</a> <br />
+          &gt; <a href="/Resume_KolCrooks.pdf">Resume</a> <br />
         </div>
         <div className="padding-bottom">
           &gt; <a href="/projects"> Projects </a>
