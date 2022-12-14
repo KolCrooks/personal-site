@@ -1,22 +1,22 @@
 import * as React from "react";
 import '../styles/index.scss';
-const Space = React.lazy(() => import("../components/space"));
+import Space from "../components/space";
 
 // markup
 const IndexPage = () => {
   return (
     <main id="main">
-      <title>Home Page</title>
-      <div className="name" onMouseMove={()=>true}>Kol Crooks</div>
+      <title>Kol Crooks Home Page</title>
+      <div className="name" onMouseMove={() => true}>Kol Crooks</div>
       <div className="links">
         <div>
-          &gt; <a href="https://github.com/KolCrooks">GitHub</a>
+          {">"} <a href="https://github.com/KolCrooks">GitHub</a>
         </div>
         <div>
-          &gt; <a href="/Resume_KolCrooks.pdf">Resume</a> <br />
+          {">"} <a href="/Resume_KolCrooks.pdf">Resume</a> <br />
         </div>
         <div className="padding-bottom">
-          &gt; <a href="/projects"> Projects </a>
+          {">"} <a href="/projects"> Projects </a>
         </div>
       </div>
       <div className="space-container">

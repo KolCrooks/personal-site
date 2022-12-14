@@ -1,1 +1,185 @@
+@use 'sass:math';
 @import './base.scss';
+
+:root {
+    --x: -10000px;
+    --y: -10000px;
+}
+
+.projects-page {
+    $dots: 0.75;
+    $dot-percent: 0.1;
+    z-index: 1;
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    min-width: 100vw;
+    background: #ffa703;
+    background-image: radial-gradient(
+        circle at center,
+        #212121 #{$dots * $dot-percent}rem,
+        transparent 0
+      ), radial-gradient(circle at center, #212121 #{$dots * $dot-percent}rem, transparent 0);
+    background-position: var(--x) var(--y), calc(var(--x) + #{math.div($dots,2)}rem) calc(var(--y) + #{math.div($dots,2)}rem);
+    background-size: #{$dots}rem #{$dots}rem;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.fader {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 167, 3, 0) 0%,rgba(255, 167, 3, 0.85) 100%);
+}
+
+.follower {
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    transform: translate(-50%, -50%);
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    background: #ffa703;
+    z-index: 1;
+}
+
+.projects-text {
+    background-color: #212121;
+    color: #ffa703;
+    margin: 1rem;
+    width: min-content;
+    padding: 0 1rem;
+    height: auto;
+    display: inline-block;
+    position: relative;
+    z-index: 3;
+    & .title {
+        font-size: min(max(10vw, 4rem),10rem);
+        font-weight: bold;
+    }
+    & .home {
+        color: white!important;
+        mix-blend-mode: normal;
+        font-size: 1rem;
+        display: inline-block;
+        margin-bottom: 1rem;
+        font-weight: unset;
+        &:hover {
+            text-decoration: none;
+            font-weight: bold;
+        }
+    }
+}
+
+.projects-container {
+    // height: 100%;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    @for $i from 1 through 3 {
+        & > div:nth-child(#{$i}n) {
+            margin-top: #{$i}rem;
+        }
+    }
+
+
+    & .project {
+        z-index: 3;
+        background-color: #212121;
+        color: #ffa703;
+        height: 20vh;
+        padding: 1rem;
+        width: max(10vw, 15rem);
+
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+    }
+    & .title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        padding: 0 1rem;
+    }
+    & .spacer {
+        flex-grow: 1;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        &::before {
+            content: '';
+            display: block;
+            height: 200%;
+            width: 200%;
+            top: -50%;
+            left: -50%;
+            position: absolute;
+            background-image: radial-gradient(#ffa703 10%, transparent 10%);
+            background-size: 15px 15px;
+            transform: rotate(30deg);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(to bottom, #21212100 0%, #212121 100%);
+        }
+    }
+    & .footer {
+        font-size: 1rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    & .link {
+        color: white;
+        text-align:right;
+    }
+}
+
+.inverts {
+    height: 50vh;
+    width: 50vh;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+}
+
+.invert-block {
+    height: 40vh;
+    width: 10rem;
+    backdrop-filter: invert(100%);
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    @for $i from 0 through 9 {
+        &.invert-#{$i} {
+            transform: translate(calc(#{$i}rem - 50%), calc(#{$i}rem - 50%));
+        }
+    }
+}
+
+.invert-circle {
+    height: 40vh;
+    width: 40vh;
+    border-radius: 50%;
+    backdrop-filter: invert(100%);
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    @for $i from 0 through 9 {
+        &.invert-#{$i} {
+            transform: translate(calc(#{$i}rem - 50%), calc(#{$i}rem - 50%));
+        }
+    }
+}

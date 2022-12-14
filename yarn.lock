@@ -1462,6 +1462,11 @@
   resolved "https://registry.yarnpkg.com/@iarna/toml/-/toml-2.2.5.tgz#b32366c89b43c6f8cefbdefac778b9c828e3ba8c"
   integrity sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==
 
+"@inlet/react-pixi@^6.8.0":
+  version "6.8.0"
+  resolved "https://registry.yarnpkg.com/@inlet/react-pixi/-/react-pixi-6.8.0.tgz#6d1f632c61ec814dd0306a61512c24d01e48f2f7"
+  integrity sha512-WIbmChkiM14XswP7pb8aCWR++h2qYKutNkXqYeWoDOQGKJw89278fRVC22zPYOw2SjSNVRtnLMlj4nkCfjTiFg==
+
 "@jimp/bmp@^0.16.1":
   version "0.16.1"
   resolved "https://registry.yarnpkg.com/@jimp/bmp/-/bmp-0.16.1.tgz#6e2da655b2ba22e721df0795423f34e92ef13768"
